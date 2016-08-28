@@ -1,0 +1,84 @@
+<html>
+  <head>
+  </head>
+  <body>
+
+      <script>
+        var color_Array = ["cyan","yellow","blue","orange","pink","red","black","green"];
+        var attempts = 0;
+        do_game();
+
+        function contains(array,testValue)
+        {
+          var i = array.length;
+          while (i--)
+          {
+             if (array[i] === testValue)
+             {
+                 return true;
+             }
+          }
+          return false;
+        }
+
+        function isLessThan(answer,guess)
+        {
+          if(guess<answer)
+          {
+            return true;
+          }
+          else
+          {
+            return false;
+          }
+        }
+
+        function isGreaterThan(answer,guess)
+        {
+          if(guess>answer)
+          {
+            return true;
+          }
+          else
+          {
+            return false;
+          }
+        }
+
+        function isEqual(answer,guess)
+        {
+          if(answer == guess)
+          {
+            return true;
+          }
+          else
+          {
+            return false;
+          }
+        }
+
+        function setBodyBackGround(name_of_color)
+        {
+          myBody=document.getElementsByTagName("body")[0];
+          myBody.style.background=name_of_color;
+        }
+
+        function do_game()
+        {
+            var answer = color_Array[Math.floor((Math.random()*color_Array.length))];
+            alert("The answer is : " + answer);
+            var finished = false;
+            while(!finished)
+            {
+              attempts++;
+              var guess = prompt("Im thinking of one of these colors : \n\n"+color_Array.sort().join());
+              if(isEqual(answer,guess))
+              {
+                alert("Congratulations! you guessed right, it took you " + attempts + " attempt/s");
+                finished = true;
+              }
+            }
+        }
+      </script>
+  </body>
+</html>
